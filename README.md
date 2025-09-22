@@ -72,6 +72,37 @@ The project includes a basic setup with:
 - Base CSS styles (non-responsive)
 - JavaScript class scaffolding with TODOs
 
+## Git Workflow Requirements
+
+### 1. Initial Implementation
+1. Create your solution branch from main:
+   ```bash
+   git checkout -b feature/your-solution main
+   ```
+2. Implement your solution following requirements
+3. Commit your changes with clear messages
+
+### 2. Integration Challenge
+After your implementation, integrate with existing code:
+
+1. **Navigation Feature (Rebase)**
+   ```bash
+   git rebase feature/navigation
+   ```
+   - Handle conflicts preserving your implementation
+   - Clean, linear history for core navigation
+
+2. **Drag & Drop Feature (Merge)**
+   ```bash
+   git merge feature/drag-drop
+   ```
+   - Resolve conflicts keeping your implementation
+   - Preserve feature development history
+
+### 3. Submission
+- Push your branch after handling conflicts
+- Include conflict resolution strategy in PR
+
 ## Tasks
 
 ### 1. Navigation Component
