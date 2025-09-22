@@ -61,4 +61,3 @@ export class Navigation {
         // Implementation needed
     }
 }
-}
