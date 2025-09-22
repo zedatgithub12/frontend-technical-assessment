@@ -1,26 +1,57 @@
 # Frontend Technical Assessment
 
 ## Overview
-This is a 24-hour technical assessment focusing on three main components. Basic scaffolding is provided - your task is to implement the core functionality:
+
+## Solution Demonstration Videos
+The following videos demonstrate the required functionality:
+
+### Navigation Features
+- [General Overview](https://drive.google.com/file/d/1KwMSwv47rR01mc3tRzGUtmBCWo9Byvfp/view?usp=drive_link)
+  - Complete page structure and layout
+  - Basic component interaction
+
+- [Sticky Navigation & Smooth Scroll](https://drive.google.com/file/d/1UHYS6FvD8NKVFf8JPK5RagTvJc0Tdx73/view?usp=drive_link)
+  - Navigation bar staying at top while scrolling
+  - Smooth scrolling to sections on button click
+
+- [Dynamic Button Highlighting](https://drive.google.com/file/d/14aCqRu_OKDWSq1yeLPAOO5UTYUE4LusF/view?usp=drive_link)
+  - Navigation buttons highlighting as sections come into view
+  - Active section indication
+
+### Interactive Features
+- [Drag & Drop Functionality](https://drive.google.com/file/d/13UeM2nJfwKjcMUR8d6lsQsiPTSN38ykw/view?usp=drive_link)
+  - Item dragging interaction
+  - Drop zone behavior
+  - Animation smoothness
+
+### Blog List Features
+- [Blog List Operations](https://drive.google.com/file/d/1PU_ezhq1s3onaMSJcOwRsoz8pdz4zC5f/view?usp=drive_link)
+  - Sorting functionality
+  - Category and tag filtering
+  - Title search implementation
+
+## Overview
+This is a 48-hour technical assessment focusing on three main components. Basic scaffolding is provided - your task is to implement the core functionality following the provided video demonstrations and screenshots. **No external packages are allowed for this assessment.**
+
+First objective should be to ensure the entire page looks stylistically like the solution.
 
 ### 1. Navigation Component
-- Track visible sections using Intersection Observer
-- Implement smooth scrolling
-- Handle mobile menu toggle
-- Add keyboard navigation
-- Make it responsive
+- Create a sticky navigation header that stays at the top while scrolling
+- When clicking navigation buttons, implement smooth scrolling for the components as highlighted in the video
+- On scrolling down once a particular component is in view (Navigation, Drag or Blog list) highlight the corresponding button with blue as shown in the video
+- Make the navigation component mobile responsive
+- Improve the header code to add accessibility via keyboard
 
 ### 2. Drag and Drop
-- Implement HTML5 drag and drop
-- Add touch support for mobile
-- Create visual feedback
-- Handle proper cleanup
+- Improve CSS styling to reflect what is seen on the screen shot
+- Ensure drag and drop functionality works (when someone clicks item1, item2 or item3 they can drag it and place it in the designated section as highlighted in the video)
+- Ensure animation is efficient (animations don't freeze)
+- NB: No external packages allowed
 
 ### 3. Blog List
-- Fetch blog data from: `https://frontend-blog-lyart.vercel.app/blogsData.json`
-- Implement pagination (10 items/page)
-- Add sorting and filtering
-- Handle loading & error states
+- Ensure the component looks like the video
+- Ensure to render 10 elements from the external link: `https://frontend-blog-lyart.vercel.app/blogsData.json`
+- Ensure there is sorting (Date, Reading time, Category) and filtering (Gadgets,Writing and Startups) by the parameters that we have on the solution
 
 #### Blog API Details
 ```javascript
@@ -66,70 +97,47 @@ Each component should be accessible:
 4. Complete the tasks below
 5. Submit a Pull Request
 
-## Project Structure
-The project includes a basic setup with:
-- HTML structure for all components
-- Base CSS styles (non-responsive)
-- JavaScript class scaffolding with TODOs
 
-## Git Workflow Requirements
+## Development Workflow
 
-### 1. Initial Implementation
-1. Create your solution branch from main:
-   ```bash
-   git checkout -b feature/your-solution main
-   ```
-2. Implement your solution following requirements
-3. Commit your changes with clear messages
+### Getting Started
+- Fork/clone the repository
+- Work in a branch with your name
+- There are existing feature branches with partial implementations that you'll need to work with
 
-### 2. Integration Challenge
-After your implementation, integrate with existing code:
+### Code Integration
+- You'll encounter conflicts with existing code
+- Resolve these conflicts while ensuring your implementation works correctly
+- Document how you handled any significant conflicts or issues
 
-1. **Navigation Feature (Rebase)**
-   ```bash
-   git rebase feature/navigation
-   ```
-   - Handle conflicts preserving your implementation
-   - Clean, linear history for core navigation
+### Submission
+Create a Pull Request with all your changes squashed into a single commit.
 
-2. **Drag & Drop Feature (Merge)**
-   ```bash
-   git merge feature/drag-drop
-   ```
-   - Resolve conflicts keeping your implementation
-   - Preserve feature development history
+The PR description MUST follow this template:
 
-### 3. Submission
-- Push your branch after handling conflicts
-- Include conflict resolution strategy in PR
+```md
+## Developer Information
+- Name: [Your Name]
+- Email: [Your Email]
 
-## Tasks
+## Implementation Summary
+### Completed Features
+- [List all completed features]
 
-### 1. Navigation Component
-Implement intersection observer-based navigation by completing the `Navigation` class:
-- Implement `initializeObserver()` to track visible sections
-- Add smooth scrolling in `scrollToSection()`
-- Implement keyboard navigation in `setupEventListeners()`
-- Add ARIA attributes for accessibility
-- Make the navigation responsive for mobile devices
+### Pending Items
+- [List any incomplete features]
 
-### 2. Drag & Drop Implementation
-Complete the `DragDrop` class to create an accessible drag and drop interface:
-- Implement HTML5 drag and drop events
-- Add touch support for mobile devices
-- Create drag previews and visual feedback
-- Implement ARIA attributes and keyboard controls
-- Handle drag animation performance
+### Technical Challenges
+- [Describe any blockers or issues encountered]
 
-### 3. Virtual List
-Complete the `VirtualList` class to efficiently render large datasets:
-- Calculate and maintain visible item range
-- Implement DOM recycling for performance
-- Handle smooth scrolling and updates
-- Add loading states and error handling
-- Optimize render performance
+### Conflict Resolution
+- [Explain how you resolved conflicts and ensured your solution works]
 
-### 4. Responsive Design & Accessibility
+### Known Issues
+- [List any known bugs, limitations or blockages found]
+```
+
+## Additional Requirements
 Enhance the base implementation with:
 - Responsive layouts using CSS media queries
 - Touch-friendly interactions
@@ -147,9 +155,7 @@ Enhance the base implementation with:
 ## Evaluation Criteria
 - Code quality and organization
 - Feature completeness
-- Performance optimization
-- Accessibility implementation
-- Responsive design
+- Responsive design implementation
 - Documentation quality
 
 ## Testing Requirements
@@ -157,13 +163,11 @@ Ensure your implementation:
 - Works across modern browsers
 - Functions on both desktop and mobile
 - Handles errors gracefully
-- Performs well with large datasets
-- Is fully keyboard accessible
 
 ## Submission Checklist
 Your PR should include:
 - Completed implementation of all classes
 - Documentation of your approach
-- Performance optimizations
 - Accessibility features
 - Responsive design implementation
+

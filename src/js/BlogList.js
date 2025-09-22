@@ -7,7 +7,6 @@ export class BlogList {
         // DOM Elements
         this.container = container;
         this.listContainer = container.querySelector('.blog-list-content');
-        this.template = document.getElementById('blog-item-template');
         this.loadingIndicator = container.querySelector('.loading-indicator');
         this.errorContainer = container.querySelector('.error-container');
         
@@ -161,5 +160,4 @@ export class BlogList {
     destroy() {
         // Implementation needed
     }
-}
 }
