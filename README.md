@@ -1,4 +1,3 @@
-Okay let me give you the instructions here that candidates will use
 # Frontend Technical Assessment
 
 ## Getting Started instructions
