@@ -1,18 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frontend Assessment</title>
+    <title>Frontend Technical Assessment</title>
     <link rel="stylesheet" href="src/css/styles.css">
 </head>
 <body>
     <header>
-        <!-- Implement navigation here -->
+        <nav class="nav">
+            <button class="nav-toggle">
+                <span class="hamburger"></span>
+            </button>
+            <ul id="nav-list" class="nav-list">
+                <li><a href="#nav-section" class="nav-link">Navigation</a></li>
+                <li><a href="#drag-section" class="nav-link">Drag & Drop</a></li>
+                <li><a href="#list-section" class="nav-link">Virtual List</a></li>
+            </ul>
+        </nav>
     </header>
+
     <main>
-        <!-- Implement your solution here -->
+        <section id="nav-section" class="content-section">
+            <h2>Navigation Component</h2>
+            <p>This section demonstrates the sticky navigation with IntersectionObserver.</p>
+            <div class="demo-content">
+                <p>Scroll to see the navigation update and highlight the current section.</p>
+            </div>
+        </section>
+
+        <section id="drag-section" class="content-section">
+            <h2>Drag & Drop Demo</h2>
+            <div class="drag-drop-container">
+                <div class="draggable-list">
+                    <div class="draggable-item" draggable="true">
+                        <div class="item-content">Item 1</div>
+                        <span class="drag-handle">⋮</span>
+                    </div>
+                    <div class="draggable-item" draggable="true">
+                        <div class="item-content">Item 2</div>
+                        <span class="drag-handle">⋮</span>
+                    </div>
+                    <div class="draggable-item" draggable="true">
+                        <div class="item-content">Item 3</div>
+                        <span class="drag-handle">⋮</span>
+                    </div>
+                </div>
+                <div class="drop-zones">
+                    <div class="drop-zone">
+                        <div class="drop-zone-label">Drop Here</div>
+                    </div>
+                    <div class="drop-zone">
+                        <div class="drop-zone-label">Drop Here</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="list-section" class="content-section">
+            <h2>Virtual List Demo</h2>
+            <div class="virtual-list-container">
+                <div class="virtual-list-viewport">
+                    <div class="virtual-list-content">
+                        <!-- Items will be rendered here -->
+                    </div>
+                </div>
+                <template id="list-item-template">
+                    <div class="list-item">
+                        <h3 class="item-title"></h3>
+                        <p class="item-description"></p>
+                    </div>
+                </template>
+            </div>
+        </section>
     </main>
+
     <script type="module" src="src/js/main.js"></script>
 </body>
 </html>
