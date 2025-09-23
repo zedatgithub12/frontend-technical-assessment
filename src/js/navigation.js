@@ -1,8 +1,4 @@
 // Global state - bad practice that will conflict with proper implementation
-window.navState = {
-    currentSection: null,
-    isScrolling: false
-};
 
 /**
  * Navigation implementation with several issues:
@@ -12,73 +8,105 @@ window.navState = {
  * - Memory leaks
  */
 export class Navigation {
-    constructor() {
-        // Direct queries without checks
-        this.sections = document.querySelectorAll('section');
-        this.links = document.querySelectorAll('a');
-        
-        // Problematic event binding
-        window.addEventListener('scroll', () => {
-            // Direct style manipulation on scroll
-            this.sections.forEach(section => {
-                const rect = section.getBoundingClientRect();
-                if (rect.top >= 0 && rect.top <= window.innerHeight) {
-                    section.style.opacity = '1';
-                    window.navState.currentSection = section.id;
-                } else {
-                    section.style.opacity = '0.5';
-                }
-            });
+  constructor() {
+    this.sections = document.querySelectorAll("section");
+    this.links = document.querySelectorAll("a");
+
+    this.observer = null;
+    this.scrollHandler = this.onScroll.bind(this);
+    this.animationFrameId = null;
+
+    window.addEventListener("scroll", this.scrollHandler, { passive: true });
+
+    this.init();
+  }
+
+  init() {
+    // IntersectionObserver with cleanup
+    this.observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle("active-section", entry.isIntersecting);
         });
+      },
+      { threshold: 0.5 }
+    );
 
-        // Memory leak - no cleanup
-        setInterval(() => {
-            this.checkScroll();
-        }, 100);
+    this.sections.forEach((section) => {
+      this.observer.observe(section);
+    });
 
-        this.init();
-    }
+    // Smooth scrolling for links
+    this.links.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        const targetId = link.getAttribute("href")?.slice(1);
+        if (!targetId) return;
 
-    init() {
-        // Problematic intersection observer setup
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                // Direct style manipulation
-                entry.target.style.transform = entry.isIntersecting 
-                    ? 'scale(1.05)' 
-                    : 'scale(1)';
-            });
-        });
+        e.preventDefault();
+        const target = document.getElementById(targetId);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
 
-        // Never disconnected
-        this.sections.forEach(section => observer.observe(section));
-
-        // Click handlers with timing issues
-        this.links.forEach(link => {
-            link.onclick = (e) => {
-                e.preventDefault();
-                const targetId = link.getAttribute('href').slice(1);
-                const target = document.getElementById(targetId);
-                
-                // Problematic scroll handling
-                window.scrollTo(0, target.offsetTop);
-                window.navState.isScrolling = true;
-                
-                // Timing issue
-                setTimeout(() => {
-                    window.navState.isScrolling = false;
-                }, 1000);
-            };
-        });
-    }
-
-    checkScroll() {
-        // CPU intensive operation on interval
-        if (!window.navState.isScrolling) {
-            this.sections.forEach(section => {
-                const rect = section.getBoundingClientRect();
-                section.style.transform = `translateY(${Math.sin(rect.top) * 2}px)`;
-            });
+          // Set active class on the clicked link
+          this.links.forEach((l) => l.classList.remove("active-link"));
+          link.classList.add("active-link");
         }
+      });
+    });
+
+    // Start animation loop
+    this.startAnimationLoop();
+  }
+
+  onScroll() {
+    this.sections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      const visible = rect.top >= 0 && rect.top <= window.innerHeight;
+      section.classList.toggle("visible", visible);
+      if (visible) {
+        const link = Array.from(this.links).find(
+          (l) => l.getAttribute("href")?.slice(1) === section.id
+        );
+        if (link) {
+          link.classList.add("active-link");
+        }
+      } else {
+        const link = Array.from(this.links).find(
+          (l) => l.getAttribute("href")?.slice(1) === section.id
+        );
+        if (link) {
+          link.classList.remove("active-link");
+        }
+      }
+    });
+  }
+
+  startAnimationLoop() {
+    const animate = () => {
+      this.sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        section.style.transform = `translateY(${
+          Math.sin(rect.top * 0.05) * 6
+        }px)`;
+      });
+      this.animationFrameId = requestAnimationFrame(animate);
+    };
+    this.animationFrameId = requestAnimationFrame(animate);
+  }
+
+  destroy() {
+    // Cleanup observers and listeners
+    if (this.observer) {
+      this.sections.forEach((section) => this.observer.unobserve(section));
+      this.observer.disconnect();
+      this.observer = null;
     }
+
+    window.removeEventListener("scroll", this.scrollHandler);
+
+    if (this.animationFrameId) {
+      cancelAnimationFrame(this.animationFrameId);
+      this.animationFrameId = null;
+    }
+  }
 }

@@ -7,5 +7,74 @@
 body {
     margin: 0;
     padding: 0;
+    position: relative;
     font-family: system-ui, -apple-system, sans-serif;
 }
+
+/* Navigation */
+.header {
+    position: relative;
+}
+.nav {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: var(--primary-color);
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hamburger {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px 0;
+    transition: 0.4s;
+    transform-origin: 1px;
+    opacity: 0;
+
+}
+
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.nav-link.active-link {
+    background-color: var(--secondary-color);
+    border-radius: 4px;
+    padding: 0.3rem 0.8rem;
+    transition: background-color 0.3s ease-out ;
+    
+}
+
+.nav-toggle {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+section {
+  transition: opacity 0.2s, transform 0.3s;
+  min-height: 100dvh;
+  text-align: center;
+}
+
+section.visible {
+  opacity: 1;
+}
+
+
