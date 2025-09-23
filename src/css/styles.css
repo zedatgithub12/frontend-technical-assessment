@@ -2,6 +2,7 @@
 :root {
     --primary-color: #2c3e50;
     --secondary-color: #3498db;
+    --border-color: #cdcdcd;
 }
 
 body {
@@ -9,3 +10,194 @@ body {
     padding: 0;
     font-family: system-ui, -apple-system, sans-serif;
 }
+
+/* Navigation Component - Responsive Requirements:
+ * Mobile (< 480px):
+ * - Stack navigation items vertically
+ * - Show hamburger menu
+ * - Hide nav-list by default
+ * - Add slide-in animation for menu
+ *
+ * Tablet (768px - 1023px):
+ * - Show navigation items in a row
+ * - Remove hamburger menu
+ * - Adjust padding and spacing
+ *
+ * Desktop (≥ 1024px):
+ * - Enhanced hover states
+ * - Sticky navigation
+ */
+
+/* Drag & Drop Component - Responsive Requirements:
+ * Mobile (< 480px):
+ * - Stack drop zones vertically
+ * - Larger touch targets
+ * - Full-width items
+ *
+ * Tablet (768px - 1023px):
+ * - 2x2 grid for drop zones
+ * - Maintain aspect ratio
+ *
+ * Desktop (≥ 1024px):
+ * - Side-by-side layout
+ * - Hover effects
+ * - Drag previews
+ */
+
+/* Blog List Component - Responsive Requirements:
+ * Mobile (< 480px):
+ * - Single column layout
+ * - Stack all elements
+ * - Compact view
+ * 
+ * Tablet (768px - 1023px):
+ * - 2 column grid
+ * - Responsive images
+ * - Show/hide certain metadata
+ *
+ * Desktop (≥ 1024px):
+ * - 3 column grid
+ * - Hover states
+ * - Enhanced animations
+ */
+
+/* Content Sections - Responsive Requirements:
+ * Mobile (< 480px):
+ * - Full-width sections
+ * - Increased text size
+ * - Stack all content
+ *
+ * Tablet (768px - 1023px):
+ * - Balanced padding
+ * - 2-column where appropriate
+ *
+ * Desktop (≥ 1024px):
+ * - Max-width container
+ * - Enhanced spacing
+ */
+
+/* TODO: Implement Components */
+
+/* Navigation
+.nav {}
+.nav-list {}
+.nav-link {}
+.nav-toggle {}
+*/
+.content-section {
+    padding: 1rem;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    min-height: 100dvh;
+}
+/* Drag & Drop */
+.drag-drop-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.8rem;
+    margin-top: 2rem;
+    border: 1.2px solid var(--border-color);
+    border-radius: 3px;
+}
+.draggable-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border:1.6px solid var(--border-color);
+    border-radius: 3px;
+    padding: 1.4rem 1rem;
+}
+.draggable-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: white;
+    cursor: grab;
+    transition: all 0.2s ease-in-out;
+}
+
+.draggable-item:hover {
+    box-shadow: 0 2px 8px rgba(153, 153, 153, 0.1);
+    transform: scale(1.002);
+}
+.draggable-item.dragging {
+  background-color: var(--secondary-color);
+  opacity: 0.8;
+  cursor: grabbing;
+}
+
+.dragged {
+  background-color: var(--secondary-color);
+  color: #fff;
+  opacity: 1;
+  z-index: 1000;
+  cursor: grabbing;
+  transition: transform 0.3s ease-out;
+
+}
+
+.draggable-item.dragged {
+    position: fixed !important;
+    background-color: var(--secondary-color);
+    color: #fff;
+    opacity: 1;
+    z-index: 1000;
+    cursor: grabbing;
+    transition: transform 0.3s ease-in-out;
+}
+
+.item-content {
+    flex: 1;
+    text-align: left;
+    color: var(--primary-color)
+}
+
+.drag-handle {
+    cursor: grab;
+    color: #aaaaaa;
+}
+.drop-zones {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+.drop-zone {
+    flex: 1;
+    min-height: 100px;
+    border: 1.6px dashed var(--border-color);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.drop-zone.drop-over {
+  background-color: rgba(52, 152, 219, 0.1);
+  border-color: var(--secondary-color);
+}
+
+
+/* Blog List
+.blog-list-container {}
+.blog-list-viewport {}
+.blog-list-content {}
+.blog-item {}
+.blog-title {}
+.blog-card {}
+.blog-card-image {}
+.blog-card-content {}
+.blog-card-meta {}
+*/
+
+/* Utility Classes
+.loading {}
+.error {}
+.active {}
+.dragging {}
+*/
