@@ -183,17 +183,124 @@ body {
 }
 
 
-/* Blog List
-.blog-list-container {}
-.blog-list-viewport {}
-.blog-list-content {}
-.blog-item {}
-.blog-title {}
-.blog-card {}
-.blog-card-image {}
-.blog-card-content {}
-.blog-card-meta {}
-*/
+/* Blog List */
+.blog-list-container {
+    margin-top: 2rem;
+    border: 1.2px solid var(--border-color);
+    border-radius: 3px;
+    box-shadow: 0 2px 8px rgba(153, 153, 153, 0.2);
+    text-align: left;
+}
+.blog-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem 0.8rem;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid var(--border-color);
+}
+.sort-select {
+    padding: 0.4rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: white;
+    color: var(--primary-color);
+    min-width: 120px;
+}
+
+.filter-select {
+    padding: 0.4rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: white;
+    color: var(--primary-color);
+     min-width: 120px;
+}
+
+.search-input {
+    padding: 0.4rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    min-width: 120px;
+}
+
+.loading-indicator {
+    text-align: center;
+    padding: 1rem;
+    color: var(--primary-color);
+}
+
+
+.blog-list-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
+}
+.hidden {
+    display: none;
+}
+
+.blog-item {
+    display: flex;
+    align-items: start;
+    gap: 0.5rem;
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: white;
+    transition: box-shadow 0.2s ease-in-out;
+}
+.blog-title {
+    font-size: 1.2rem;
+  margin-top: 0.4rem;
+    color: var(--primary-color);
+}
+
+.blog-image {
+    width: 180px;
+    height: 140px;
+    border-radius: 4px;
+    object-fit: cover;
+    margin-top: 1rem;
+  
+}
+.blog-content {
+    padding: 0.8rem;
+    text-align: left;
+}
+.blog-meta {
+    font-size: 0.84rem;
+    color: #222;
+    font-weight: medium;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    
+}
+ 
+.blog-excerpt {
+    color: #222;
+    margin: 0.5rem 0;
+    flex: 1;
+}
+.blog-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 1.4rem;
+}
+.tag {
+    color: #fff;
+    border-radius: 4px;
+    padding: 0.3rem 0.4rem;
+    font-size: 0.8rem;
+    background-color: var(--secondary-color);
+}
+
 
 /* Utility Classes
 .loading {}
