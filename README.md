@@ -56,15 +56,15 @@ This is a 48-hour technical assessment focusing on three main components. Basic 
 - drag and drop
 - blog listing
 - blog search and filtering
-- added responsive breaking points
+- responsiveness
 
 
 ### Pending Items
 - [List any incomplete features]
+-- all task are completed
 
 ### Technical Challenges
 - [Describe any blockers or issues encountered]
-- responsive design
 
 ### AI Usage
 - [List any AI tools used during your implementation]
