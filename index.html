@@ -9,10 +9,31 @@
 </head>
 
 <body>
-    <header>
-        <!-- Implement navigation here (not required on this branch) -->
+    <header class="header" aria-label="Header">
+        <nav class="nav">
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-list">
+                <span class="hamburger"></span>
+            </button>
+            <ul id="nav-list" class="nav-list" aria-label="navigation links">
+                <li><a href="#nav-section" class="nav-link active-link" aria-label="Navigation">Navigation</a></li>
+                <li><a href="#drag-section" class="nav-link" aria-label="Drag and Drop">Drag & Drop</a></li>
+                <li><a href="#list-section" class="nav-link" aria-label="Blog List">Blog List</a></li>
+            </ul>
+        </nav>
     </header>
     <main>
+
+        <section id="nav-section" class="content-section">
+            <h2>Navigation Component</h2>
+            <p class="nav-description">This section demonstrates a sticky navigation with Intersection Observer.
+            </p>
+
+            <div class="nav-info">
+                <p class="nav-info-content"> Scroll to see navigation updates and highlight the current section.</p>
+            </div>
+
+        </section>
+
         <section id="drag-section" class="content-section">
             <h2>Drag & Drop Demo</h2>
             <div class="drag-drop-container">
@@ -66,6 +87,7 @@
                 </div>
             </div>
         </section>
+
     </main>
     <script type="module" src="src/js/main.js"></script>
 </body>

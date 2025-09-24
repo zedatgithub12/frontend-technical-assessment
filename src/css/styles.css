@@ -23,92 +23,279 @@
 }
 
 body {
-    font-family: system-ui, sans-serif;
-    line-height: 1.6;
-    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    position: relative;
+    font-family: system-ui, -apple-system, sans-serif;
 }
 
-/* Base Styles */
-.container {
+/* Navigation Component - Responsive Requirements: */
+
+ /* Mobile (< 480px) */
+ @media (max-width: 480px) {
+  .nav {
     width: 100%;
-    max-width: var(--large-desktop);
-    margin: 0 auto;
-    padding: 0 var(--spacing);
+    justify-content: space-between;
+    align-items: start;
+    padding: 0.5rem 1rem;
+  }
+
+  .nav-list {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    background: var(--primary-color);
+    padding: 1rem;
+    animation: slideIn 0.3s ease-out forwards;
+  }
+
+  .nav-toggle, .hamburger {
+    display: block;
+    margin-top: 1.6rem;
+  }
+
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 
-/* Navigation Component - Responsive Requirements:
- * Mobile (< 480px):
- * - Stack navigation items vertically
- * - Show hamburger menu
- * - Hide nav-list by default
- * - Add slide-in animation for menu
- *
- * Tablet (768px - 1023px):
- * - Show navigation items in a row
- * - Remove hamburger menu
- * - Adjust padding and spacing
- *
- * Desktop (≥ 1024px):
- * - Enhanced hover states
- * - Sticky navigation
- */
+/* Tablet (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .nav {
+    justify-content: center;
+    align-items: center;
+  }
 
-/* Drag & Drop Component - Responsive Requirements:
- * Mobile (< 480px):
- * - Stack drop zones vertically
- * - Larger touch targets
- * - Full-width items
- *
- * Tablet (768px - 1023px):
- * - 2x2 grid for drop zones
- * - Maintain aspect ratio
- *
- * Desktop (≥ 1024px):
- * - Side-by-side layout
- * - Hover effects
- * - Drag previews
- */
+  .nav-list {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+  }
 
-/* Blog List Component - Responsive Requirements:
- * Mobile (< 480px):
- * - Single column layout
- * - Stack all elements
- * - Compact view
- * 
- * Tablet (768px - 1023px):
- * - 2 column grid
- * - Responsive images
- * - Show/hide certain metadata
- *
- * Desktop (≥ 1024px):
- * - 3 column grid
- * - Hover states
- * - Enhanced animations
- */
+  .nav-toggle {
+    display: none;
+  }
+  .nav-toggle.hamburger {
+    display: none;
+  }
+}
 
-/* Content Sections - Responsive Requirements:
- * Mobile (< 480px):
- * - Full-width sections
- * - Increased text size
- * - Stack all content
- *
- * Tablet (768px - 1023px):
- * - Balanced padding
- * - 2-column where appropriate
- *
- * Desktop (≥ 1024px):
- * - Max-width container
- * - Enhanced spacing
- */
+/* Desktop (≥ 1024px) */
+@media (min-width: 1024px) {
+      .nav {
+    justify-content: center;
+  }
+  .nav-list {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+  }
 
-/* TODO: Implement Components */
+  .nav-link:hover {
+    background-color: var(--secondary-color);
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+  }
 
-/* Navigation
-.nav {}
-.nav-list {}
-.nav-link {}
-.nav-toggle {}
-*/
+   .nav-toggle {
+    display: none;
+  }
+}
+
+
+/* Drag & Drop Component - Responsive Requirements */
+/* mobile (< 480px) */
+@media (max-width: 480px) {
+  .drag-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .drop-zones {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+  .drop-zone {
+    width: 100%;
+    padding: 2rem;
+    font-size: 1.1rem;
+  }
+
+  
+}
+/* Tablet (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .drag-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .drop-zones {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+  .drop-zone {
+    aspect-ratio: 1 / 1;
+  }
+}
+
+/* Desktop (≥ 1024px) */
+@media (min-width: 1024px) {
+  .drag-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
+    .drop-zones {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+  .drop-zone {
+    flex: 1;
+    transition: all 0.3s ease;
+  }
+  
+
+  .drop-zone:hover {
+    background: rgba(52, 152, 219, 0.05);
+  }
+}
+
+/* Blog List Component - Responsive Requirements */
+
+/* mobile (< 480px) */
+@media (max-width: 480px) {
+
+    .blog-controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: start;
+    gap: 1rem;
+    padding: 1.2rem 0.8rem;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid var(--border-color);
+}
+
+  .blog-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .blog-item {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+ 
+}
+
+.blog-image {
+    width: 96%;
+    height: auto;
+    border-radius: 4px;
+    object-fit: cover;
+    margin: "auto";
+    margin: auto;
+}
+}
+/* Tablet (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    .blog-controls {
+    align-items: center;
+}
+
+  .blog-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+.blog-image {
+    width: 180px;
+    height: 140px;
+    border-radius: 4px;
+    object-fit: cover;
+    margin-top: 1rem;
+}
+}
+
+/* Desktop (≥ 1024px) */
+@media (min-width: 1024px) {
+    
+    .blog-controls {
+    align-items: center;
+}
+  .blog-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .blog-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .blog-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .blog-image {
+    width: 180px;
+    height: 140px;
+    border-radius: 4px;
+    object-fit: cover;
+    margin-top: 1rem;
+}
+}
+
+/* Content Sections - Responsive Requirements */
+
+@media (max-width: 480px) {
+  .content-section {
+    width: 100%;
+    font-size: 1.1rem;
+    text-align: center;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .content-section {
+    padding: 2rem;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .content-section {
+    max-width: 700px;
+    padding: 3rem;
+    margin: 0 auto;
+    text-align: left;
+  }
+}
+
 .content-section {
     padding: 1rem;
     max-width: 700px;
@@ -116,6 +303,114 @@ body {
     text-align: center;
     min-height: 100dvh;
 }
+
+
+.content-section.visible {
+  opacity: 1;
+}
+
+/* Navigation */
+.header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    
+}
+.nav {
+    width: 100%;
+    background-color: var(--primary-color);
+    display: flex;
+    gap: 6px;
+    padding: 0.8rem;
+}
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 400;
+    padding: 0.3rem 0.4rem;
+}
+.nav-link:hover {
+    background-color: var(--secondary-color);
+     padding: 0.3rem 0.4rem;
+    border-radius: 4px;
+   transition: background-color 0.2s ease-out ;
+}
+
+.nav-link.active-link {
+    background-color: var(--secondary-color);
+    border-radius: 4px;
+    padding: 0.3rem 0.4rem;
+    transition: background-color 0.3s ease-out ;
+    
+}
+
+.nav-toggle {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+}
+
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  display: block;
+  width: 24px;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+  position: relative;
+  transition: all 0.3s ease;
+  margin: auto;
+  
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 0;
+}
+
+.hamburger::before {
+  top: -8px;
+}
+
+.nav-description {
+    max-width: 600px;
+    color: #555;
+    text-align: center;
+    margin-top:1.4rem;
+}
+
+.nav-info {
+    display: flex;
+    justify-content: start;
+    margin-top: 2rem;
+    padding: 1rem 0.8rem;
+    border: 1px solid #dedede;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(180, 180, 180, 0.1);
+}
+
+.nav-info-content {
+    color: #000;
+}
+
+
 /* Drag & Drop */
 .drag-drop-container {
     display: flex;
@@ -187,8 +482,6 @@ body {
     color: #aaaaaa;
 }
 .drop-zones {
-    display: flex;
-    flex-direction: row;
     gap: 1rem;
 }
 .drop-zone {
@@ -218,7 +511,6 @@ body {
 }
 .blog-controls {
     display: flex;
-    align-items: center;
     gap: 1rem;
     padding: 1.2rem 0.8rem;
     background-color: #f9f9f9;
@@ -283,14 +575,8 @@ body {
     color: var(--primary-color);
 }
 
-.blog-image {
-    width: 180px;
-    height: 140px;
-    border-radius: 4px;
-    object-fit: cover;
-    margin-top: 1rem;
-  
-}
+
+
 .blog-content {
     padding: 0.8rem;
     text-align: left;
@@ -333,4 +619,6 @@ body {
 .active {}
 .dragging {}
 */
+
+
 

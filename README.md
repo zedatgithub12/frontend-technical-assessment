@@ -51,15 +51,25 @@ This is a 48-hour technical assessment focusing on three main components. Basic 
 ## Implementation Summary
 ### Completed Features
 - [List all completed features]
+- navigation
+- added event listeners for proper scroll handling
+- drag and drop
+- blog listing
+- blog search and filtering
+- added responsive breaking points
+
 
 ### Pending Items
 - [List any incomplete features]
 
 ### Technical Challenges
 - [Describe any blockers or issues encountered]
+- responsive design
 
 ### AI Usage
 - [List any AI tools used during your implementation]
+- chatgpt
+- google gemini
 ```
 
 3. Follow this submision link [Click here](https://forms.gle/1WPuqpcuaWnhaASAA) and provide your email address and the url link to your completed project repository.
