@@ -14,8 +14,6 @@ export class Navigation {
 
     this.observer = null;
     this.scrollHandler = this.onScroll.bind(this);
-    this.animationFrameId = null;
-
     window.addEventListener("scroll", this.scrollHandler, { passive: true });
 
     this.init();
@@ -53,15 +51,14 @@ export class Navigation {
         }
       });
     });
-
-    // Start animation loop
-    this.startAnimationLoop();
   }
 
   onScroll() {
     this.sections.forEach((section) => {
       const rect = section.getBoundingClientRect();
-      const visible = rect.top >= 0 && rect.top <= window.innerHeight;
+      const visible =
+        rect.top >= -window.innerHeight / 2 &&
+        rect.top <= window.innerHeight / 2;
       section.classList.toggle("visible", visible);
       if (visible) {
         const link = Array.from(this.links).find(
@@ -81,19 +78,6 @@ export class Navigation {
     });
   }
 
-  startAnimationLoop() {
-    const animate = () => {
-      this.sections.forEach((section) => {
-        const rect = section.getBoundingClientRect();
-        section.style.transform = `translateY(${
-          Math.sin(rect.top * 0.05) * 6
-        }px)`;
-      });
-      this.animationFrameId = requestAnimationFrame(animate);
-    };
-    this.animationFrameId = requestAnimationFrame(animate);
-  }
-
   destroy() {
     // Cleanup observers and listeners
     if (this.observer) {
@@ -103,10 +87,5 @@ export class Navigation {
     }
 
     window.removeEventListener("scroll", this.scrollHandler);
-
-    if (this.animationFrameId) {
-      cancelAnimationFrame(this.animationFrameId);
-      this.animationFrameId = null;
-    }
   }
 }
